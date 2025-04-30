@@ -3,7 +3,7 @@ package com.revature.planetarium.utility.test;
 import java.sql.*;
 
 public class ServerlessSQLInteractions {
-    static String url = "jdbc:sqlite:LocalPlanetarium.db";
+    static String url = "jdbc:sqlite:src/main/resources/LocalPlanetarium.db";
     public static void createDatabase(){
         try (Connection conn = DriverManager.getConnection(url)) {
 
