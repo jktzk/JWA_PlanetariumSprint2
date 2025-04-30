@@ -2,6 +2,7 @@ package com.revature.planetarium.repository.user;
 
 import com.revature.planetarium.entities.User;
 import com.revature.planetarium.util.TestUtilities;
+import com.revature.planetarium.utility.test.ServerlessSQLInteractions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class CreateUserRepoNegativeTest {
 
     @Before
     public void setup() throws IOException, InterruptedException {
-        TestUtilities.resetDatabase();
+        ServerlessSQLInteractions.createDatabase();
         userDao = new UserDaoImp();
         negativeUser = new User(0, username, password);
     }
