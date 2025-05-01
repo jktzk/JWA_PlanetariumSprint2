@@ -25,7 +25,7 @@ public class Moon {
         this.ownerId = planetId;
         this.imageData = imageData;
     }
-    
+
     public int getMoonId() {
         return moonId;
     }
