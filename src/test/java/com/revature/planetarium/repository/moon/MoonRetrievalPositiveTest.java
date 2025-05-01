@@ -12,40 +12,22 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@RunWith(Parameterized.class)
 public class MoonRetrievalPositiveTest {
+
     private MoonDao moonDao;
 
-
-
-    @Parameterized.Parameter
-    public String moonName;
-
-
-    @Parameterized.Parameters
-    public static String[][] inputs(){
-        return new String[][] {
-                {"deimos"},
-                {"Khonsu"},
-                {"PHOBOS"},
-                {"_e_u_r_o_p_a_"},
-                {"t i t a n"},
-                {"-c-a-l-l-i-s-t-o"},
-                {"1tr1t0n"},
-                {"ch4 R-0_N"},
-        };
-    }
+    public int planetId = 1;
 
     @Before
-    public void setup() throws IOException, InterruptedException, SQLException {
+    public void setup() throws IOException, InterruptedException {
         TestUtilities.resetDatabase();
         moonDao = new MoonDaoImp();
     }
 
     @Test
     public void moonRetrievalPositiveTest() throws SQLException {
-        List<Moon> result = moonDao.readMoonsByPlanet(1);
-        Assert.assertEquals(1, result.get(0).getOwnerId());
+        List<Moon> result = moonDao.readMoonsByPlanet(planetId);
+        Assert.assertEquals("Luna", result.get(0).getMoonName());
     }
 }
 
