@@ -5,12 +5,14 @@ import com.revature.planetarium.util.TestUtilities;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
+@RunWith(Parameterized.class)
 public class MoonDeletionNegativeTest {
 
 
