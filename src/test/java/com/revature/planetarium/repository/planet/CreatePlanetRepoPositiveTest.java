@@ -21,17 +21,29 @@ public class CreatePlanetRepoPositiveTest {
 
     private Planet positivePlanet;
 
+    public static String pathName = "src/test/resources/Celestial-Images/";
     @Parameterized.Parameter
     public String planetName;
     @Parameterized.Parameter(1)
-    public int ownerId;
+    public String ownerId;
     @Parameterized.Parameter(2)
     public String imageData;
     // use Postman to see what this would look like with a GET method.
 
+    @Parameterized.Parameters
     public static String[][] inputs() {
         return new String[][] {
-                {"Mars","1",""}
+                {"Saturn","1",""},
+                {"Saturn","1","planet-5.jpg"},
+                {"Saturn","1","planet-5.png"},
+                {"A","1",""},
+                {"jupiter","1",""},
+                {"NEPTUNE","1",""},
+                {" v e n u s ","1",""},
+                {"-u-r-a-n-u-s-","1",""},
+                {"1plu20","1",""},
+                {"E 4_r-tH","1",""},
+                {"thisshouldbethirtycharachterss","1",""}
         };
     }
 
@@ -39,7 +51,11 @@ public class CreatePlanetRepoPositiveTest {
     public void setup() throws IOException, InterruptedException {
         TestUtilities.resetDatabase();
         planetDao = new PlanetDaoImp();
-        positivePlanet = new Planet(0,planetName,ownerId,imageData.getBytes());
+        if (imageData.isEmpty()) {
+            positivePlanet = new Planet(0,planetName,Integer.parseInt(ownerId));
+        } else {
+            positivePlanet = new Planet(0,planetName,Integer.parseInt(ownerId),(pathName + imageData).getBytes());
+        }
     }
 
     @Test
