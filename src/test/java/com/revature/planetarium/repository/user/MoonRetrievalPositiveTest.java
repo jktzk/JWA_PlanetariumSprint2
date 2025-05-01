@@ -7,12 +7,14 @@ import com.revature.planetarium.util.TestUtilities;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+@RunWith(Parameterized.class)
 public class MoonRetrievalPositiveTest {
     private MoonDao moonDao;
 
@@ -37,7 +39,7 @@ public class MoonRetrievalPositiveTest {
     }
 
     @Before
-    public void setup() throws IOException, InterruptedException {
+    public void setup() throws IOException, InterruptedException, SQLException {
         TestUtilities.resetDatabase();
         moonDao = new MoonDaoImp();
     }
