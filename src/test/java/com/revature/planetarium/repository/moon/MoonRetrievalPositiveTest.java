@@ -1,21 +1,19 @@
-package com.revature.planetarium.repository.user;
+package com.revature.planetarium.repository.moon;
 
 import com.revature.planetarium.entities.Moon;
-import com.revature.planetarium.repository.moon.MoonDao;
-import com.revature.planetarium.repository.moon.MoonDaoImp;
 import com.revature.planetarium.util.TestUtilities;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Optional;
+import java.util.List;
 
-public class MoonDeletionNegativeTest {
-
-
+@RunWith(Parameterized.class)
+public class MoonRetrievalPositiveTest {
     private MoonDao moonDao;
 
 
@@ -39,17 +37,16 @@ public class MoonDeletionNegativeTest {
     }
 
     @Before
-    public void setup() throws IOException, InterruptedException {
+    public void setup() throws IOException, InterruptedException, SQLException {
         TestUtilities.resetDatabase();
         moonDao = new MoonDaoImp();
     }
 
     @Test
-    public void deleteMoonNegativeTest() throws SQLException {
-        boolean deleted = moonDao.deleteMoon(moonName);
-        Assert.assertFalse(moonName, deleted);
-        Optional<Moon> result = moonDao.readMoon(moonName);
-        Assert.assertFalse(moonName, result.isPresent());
+    public void moonRetrievalPositiveTest() throws SQLException {
+        List<Moon> result = moonDao.readMoonsByPlanet(1);
+        Assert.assertEquals(1, result.get(0).getOwnerId());
     }
-
 }
+
+
