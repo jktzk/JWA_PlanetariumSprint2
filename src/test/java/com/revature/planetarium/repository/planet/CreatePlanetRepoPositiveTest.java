@@ -28,7 +28,6 @@ public class CreatePlanetRepoPositiveTest {
     public String ownerId;
     @Parameterized.Parameter(2)
     public String imageData;
-    // use Postman to see what this would look like with a GET method.
 
     @Parameterized.Parameters
     public static String[][] inputs() {
@@ -59,7 +58,7 @@ public class CreatePlanetRepoPositiveTest {
     }
 
     @Test
-    public void createUserPositiveTest() throws SQLException {
+    public void createPlanetRepoPositiveTest() throws SQLException {
         Optional<Planet> result = planetDao.createPlanet(positivePlanet);
         Assert.assertTrue(result.isPresent());
         Planet returnedPlanet = result.get();
