@@ -33,6 +33,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.4</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>5.5.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!--   NOTE: the RESTAssured team recommends putting the RESTAssured dependency before the Junit dependency     -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
