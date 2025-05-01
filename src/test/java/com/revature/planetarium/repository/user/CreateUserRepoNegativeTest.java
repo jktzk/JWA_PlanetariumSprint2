@@ -37,6 +37,9 @@ public class CreateUserRepoNegativeTest {
                 {"Robin","bobby","password_character_check"},
                 {"Robin","Bobb3!@%!@?$%","password_character_check"},
                 {"Robin","3obbY","password_character_check"},
+                {"Robin","BOBBY","password_character_check"},
+                {"Robin","bobb3","password_character_check"},
+                {"Robin","BOBB3","password_character_check"},
                 {"Robin","ThisisoverthirtyCharacters3ss3s","password_length_check"},
         };
     }

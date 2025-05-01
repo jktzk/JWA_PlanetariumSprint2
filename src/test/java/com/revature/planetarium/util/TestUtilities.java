@@ -21,5 +21,4 @@ public class TestUtilities {
         client.send(request, HttpResponse.BodyHandlers.ofString());
 
     }
-
 }
