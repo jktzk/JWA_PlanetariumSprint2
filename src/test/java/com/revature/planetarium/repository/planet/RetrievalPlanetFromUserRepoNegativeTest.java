@@ -24,7 +24,7 @@ public class RetrievalPlanetFromUserRepoNegativeTest {
     }
 
     @Test
-    public void retrievalPlanetFromUserPositiveTest() throws SQLException {
+    public void retrievalPlanetFromUserNegativeTest() throws SQLException {
         List<Planet> result = planetDao.readPlanetsByOwner(unknownID);
         Assert.assertTrue(result.isEmpty());
     }
