@@ -1,8 +1,6 @@
-package com.revature.planetarium.repository.user;
+package com.revature.planetarium.repository.moon;
 
 import com.revature.planetarium.entities.Moon;
-import com.revature.planetarium.repository.moon.MoonDao;
-import com.revature.planetarium.repository.moon.MoonDaoImp;
 import com.revature.planetarium.util.TestUtilities;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +10,6 @@ import org.junit.runners.Parameterized;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 public class MoonRetrievalNegativeTest {
 

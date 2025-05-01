@@ -1,12 +1,10 @@
-package com.revature.planetarium.service;
+package com.revature.planetarium.service.user;
 
 
 import com.revature.planetarium.entities.User;
 import com.revature.planetarium.exceptions.UserFail;
 import com.revature.planetarium.repository.user.UserDao;
 import com.revature.planetarium.repository.user.UserDaoImp;
-import com.revature.planetarium.service.user.UserService;
-import com.revature.planetarium.service.user.UserServiceImp;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
