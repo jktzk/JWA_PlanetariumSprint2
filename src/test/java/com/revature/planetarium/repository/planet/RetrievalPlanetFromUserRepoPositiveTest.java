@@ -37,18 +37,4 @@ public class RetrievalPlanetFromUserRepoPositiveTest {
         Assert.assertEquals(result.get(0).getOwnerId(),knownID);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
