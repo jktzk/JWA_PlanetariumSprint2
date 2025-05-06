@@ -54,7 +54,7 @@ public class PlanetCreationPositiveServiceTest {
     }
 
     @Test
-    public void planetCreationPositiveService() throws SQLException, IOException {
+    public void planetCreationPositiveServiceTest() throws SQLException, IOException {
         // -----------Mocking------------
         // mocking lines 39-40 ---- mock stubbed bytes array for jpg and png from internal helper method
         byte[] stubbedByteArray= returnImageByteArray(byteArray);
