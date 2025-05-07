@@ -8,7 +8,7 @@ import com.revature.planetarium.service.planet.PlanetService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CelestialServiceImp implements CelestialService{
+public class    CelestialServiceImp implements CelestialService{
 
     private MoonService moonService;
     private PlanetService planetService;
