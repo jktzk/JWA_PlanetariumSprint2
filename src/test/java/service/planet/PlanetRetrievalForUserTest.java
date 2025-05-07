@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PlanetRetrievalForUser {
+public class PlanetRetrievalForUserTest {
 
     @Mock
     private PlanetDao planetDao;
