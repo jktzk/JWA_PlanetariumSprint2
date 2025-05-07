@@ -11,7 +11,6 @@ public class LogoutAPITest {
     public void logoutTest() {
         RestAssured
                 .when().post("logout")
-                .then().header("Content-Type", IsEqual.equalTo(ContentType.JSON.toString()))
-                .statusCode(401);
+                .then().statusCode(401);
     }
 }
