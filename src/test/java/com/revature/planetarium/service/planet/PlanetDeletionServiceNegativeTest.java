@@ -53,7 +53,6 @@ public class PlanetDeletionServiceNegativeTest {
 
     @Before
     public void setup() throws IOException, InterruptedException {
-        TestUtilities.resetDatabase();
 
         planetDao = Mockito.mock(PlanetDaoImp.class);
         planetEntity = Mockito.mock(Planet.class);
