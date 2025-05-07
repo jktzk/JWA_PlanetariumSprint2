@@ -47,21 +47,21 @@ public class PlanetCreationNegativeServiceTest {
     @Parameterized.Parameters
     public static Object[][] inputs(){
         return new Object[][]{
-                //testing invalid planet name
+                    //testing invalid planet name
                 {"",1,0,Optional.empty(),Optional.of(emptyPlanet),"Invalid planet name"},
                 {"thisisoverthirtycharachtersssss",1,0,Optional.empty(),Optional.of(emptyPlanet),"Invalid planet name"},
                 {"E!@#$%^&*()_+{}|?/",1,0,Optional.empty(),Optional.of(emptyPlanet),"Invalid planet name"},
 
-                //testing invalid owner identifier
+                    //testing invalid owner identifier
                 {"jupiter",2,0,Optional.empty(),Optional.of(emptyPlanet),"Invalid owner identifier"},
 
-                //testing dublicate name
+                    //testing dublicate name
                 {"jupiter",1,0,Optional.of(emptyPlanet),Optional.of(emptyPlanet),"Invalid planet name"},
 
-                //testing invalid file type
+                    //testing invalid file type
                 {"jupiter",1,3,Optional.empty(),Optional.of(emptyPlanet),"Invalid file type"},
 
-                //testing failed to create planet
+                    //testing failed to create planet
                 {"jupiter",1,0,Optional.empty(),Optional.empty(),"Failed to create Planet"},
 
         };
@@ -108,8 +108,6 @@ public class PlanetCreationNegativeServiceTest {
             exception = e;
         }
 
-
-        //assertion of true for result
 
         Assert.assertEquals(message,exception.getMessage());
 
