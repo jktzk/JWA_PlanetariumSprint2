@@ -48,7 +48,7 @@ public class CreateUserServicePositiveTest {
         userDAO = Mockito.mock(UserDaoImp.class);
         userService = new UserServiceImp(userDAO);
         positiveUser = new User(0,username,password);
-        stubbedUser = new  User(3,username,password);
+        stubbedUser = new User(3,username,password);
     }
 
     @Test
