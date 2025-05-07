@@ -56,12 +56,15 @@ public class MoonDeletionServiceNegativeTest {
 
     @Test
     public void testMoonDaoreadMoonsByPlanetisActuallyCalled() throws SQLException {
-        Mockito.when(moonDAO.deleteMoon("cat")).thenThrow(new AssertionError("deleteMoon should not have been reached"));
-        //Mockito.when(moonDAO.deleteMoon(312).thenThrow(new AssertionError("deleteMoon should not have been reached"));
-        Mockito.when(moonDAO.deleteMoon("Luna")).thenReturn(false);
-        boolean result = moonService.deleteMoon(moonName);
-        Assert.assertEquals(false,result);
+        //  Mockito.when(moonDAO.deleteMoon("cat")).thenThrow(new AssertionError("deleteMoon should not have been reached"));
+        //  Mockito.when(moonDAO.deleteMoon(312).thenThrow(new AssertionError("deleteMoon should not have been reached"));
+        //  Mockito.when(moonDAO.deleteMoon("Luna")).thenReturn(false);
+        //  boolean result = moonService.deleteMoon(moonName);
+        //  Assert.assertEquals(false,result);
 
+        Mockito.when(moonDAO.deleteMoon(Mockito.anyString())).thenReturn(false);
+        MoonFail exception = Assert.assertThrows(MoonFail.class, () -> moonService.deleteMoon(negativeMoon.getMoonName()));
+        Assert.assertEquals(exceptionText, exception.getMessage());
     }
 
     
