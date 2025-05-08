@@ -46,7 +46,6 @@ public class PlanetDeletionServicePositiveTest {
         stubbedPlanet = new Planet(4, planetName,ownerId);
 
     }
-
     @Test
     public void deletePlanetServicePositiveTest() throws SQLException {
         List<Planet> posPlanetList = Arrays.asList(stubbedPlanet);
@@ -55,7 +54,4 @@ public class PlanetDeletionServicePositiveTest {
         boolean result = planetService.deletePlanet(stubbedPlanet.getOwnerId(),stubbedPlanet.getPlanetName());
         Assert.assertTrue(result);
     }
-
-
-
 }
