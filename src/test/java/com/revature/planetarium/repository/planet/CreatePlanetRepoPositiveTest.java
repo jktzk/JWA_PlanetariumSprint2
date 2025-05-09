@@ -1,8 +1,6 @@
 package com.revature.planetarium.repository.planet;
 
 import com.revature.planetarium.entities.Planet;
-import com.revature.planetarium.entities.User;
-import com.revature.planetarium.repository.user.UserDaoImp;
 import com.revature.planetarium.util.TestUtilities;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,7 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -53,7 +53,9 @@ public class CreatePlanetRepoPositiveTest {
         if (imageData.isEmpty()) {
             positivePlanet = new Planet(0,planetName,Integer.parseInt(ownerId));
         } else {
-            positivePlanet = new Planet(0,planetName,Integer.parseInt(ownerId),(pathName + imageData).getBytes());
+            positivePlanet = new Planet(0,planetName,Integer.parseInt(ownerId),
+                    Files.readAllBytes(new File(pathName + imageData).toPath())
+            );
         }
     }
 
