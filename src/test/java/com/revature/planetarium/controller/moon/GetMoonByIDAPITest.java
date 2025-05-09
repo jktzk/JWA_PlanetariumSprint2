@@ -2,6 +2,8 @@ package com.revature.planetarium.controller.moon;
 import com.revature.planetarium.controller.APIFixture;
 import com.revature.planetarium.entities.Moon;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +20,7 @@ import static org.junit.Assert.*;
 public class GetMoonByIDAPITest extends APIFixture {
 
     private String sessionID;
+    private Map<String,String> jsonAsMap;
 
     @Parameterized.Parameter
     public int moonID;
@@ -57,11 +60,15 @@ public class GetMoonByIDAPITest extends APIFixture {
                 .cookie("JSESSIONID", sessionID)
                 .when().get("/planetarium/user/"+ownerID+"/moon")
                 .then()
+                .header("Content-Type", IsEqual.equalTo(ContentType.JSON.toString()))
                 .statusCode(statusCode)
                 .extract()
                 .as(Moon[].class);
 
+
+
         if(ownerID!=0) {
+            System.out.println(moons[0]);
             Moon moon = moons[0];
             byte[] decodedImageData = Base64.getDecoder().decode(moon.getImageData());
             assertEquals(moonID, moon.getMoonId());
