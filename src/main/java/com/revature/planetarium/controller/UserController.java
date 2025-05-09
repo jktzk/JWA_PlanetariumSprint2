@@ -20,7 +20,7 @@ public class UserController {
         User user = ctx.bodyAsClass(User.class);
         String result = userService.createUser(user);
         ctx.status(201);
-        ctx.json(result);
+        ctx.json("result");
     }
 
     public void login(Context ctx){
