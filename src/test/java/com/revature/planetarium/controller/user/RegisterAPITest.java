@@ -63,7 +63,7 @@ public class RegisterAPITest extends APIFixture {
         RestAssured.given()
                 .contentType(ContentType.JSON).body(jsonAsMap)
                 .when().post("register")
-                .then().assertThat().header("Content-Type", IsEqual.equalTo(ContentType.JSON.toString()))
+                .then().header("Content-Type", IsEqual.equalTo(ContentType.JSON.toString()))
                 .statusCode(statusCode).body("message", IsEqual.equalTo(message));
     }
 

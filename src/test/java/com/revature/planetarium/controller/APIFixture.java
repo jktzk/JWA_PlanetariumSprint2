@@ -4,7 +4,6 @@ package com.revature.planetarium.controller;
 import com.revature.planetarium.util.TestUtilities;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.BeforeClass;

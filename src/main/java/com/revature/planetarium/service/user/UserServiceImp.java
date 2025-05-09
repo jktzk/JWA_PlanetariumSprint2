@@ -41,7 +41,7 @@ public class UserServiceImp implements UserService {
             }
             Optional<User> createdUser = userDao.createUser(newUser);
             if (createdUser.isPresent()) {
-                return "{\"response\":\"User created successfully!\"}";
+                return "User created successfully";
             } else {
                 throw new UserFail("Failed to create user, please try again");
             }
