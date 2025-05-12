@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Base64;
 
 @RunWith(Parameterized.class)
 public class CreatePlanetAPINegativeTest extends APIFixture {
@@ -67,9 +68,9 @@ public class CreatePlanetAPINegativeTest extends APIFixture {
                     .body("message", IsEqual.equalTo(message));
         } else {
             requestBody = "{ \"planetName\": \"" + planetName + "\"," +
-                    "\"ownerId\": \"" + ownerId + "\"" +
+                    "\"ownerId\": \"" + ownerId + "\"," +
                     "\"imageData\": \"" +
-                    Arrays.toString(Files.readAllBytes(new File(pathName + imageData).toPath()))
+                    Base64.getEncoder().encodeToString(Files.readAllBytes(new File(pathName + imageData).toPath()))
                     + "\"" +
                     "}";
             RestAssured.given()

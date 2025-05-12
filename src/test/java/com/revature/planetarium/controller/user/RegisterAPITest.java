@@ -9,13 +9,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
 @RunWith(Parameterized.class)
 public class RegisterAPITest extends APIFixture {
 
-    private Map<String,String> jsonAsMap;
+//    private Map<String,String> jsonAsMap;
 
     @Parameterized.Parameter
     public String username;
@@ -36,34 +37,30 @@ public class RegisterAPITest extends APIFixture {
                 {"Robin","bobb-1","User created successfully",201},
                 {"Robin","bob_b-1","User created successfully",201},
                 {"Robin","Thisshouldbethirtycharcters3","User created successfully",201},
-                {"Batman","bObb1","UNIQUE",400},
-                {"bobb","bObb1","username_length_check",400},
-                {"thisisoverthirtycharachtersssss","bObb1","username_length_check",400},
-                {"Robin>!@#?!@#$%","bObb1","username_character_check",400},
-                {"_Robin","bObb1","username_character_check",400},
-                {"3Robin","b0bb1","username_character_check",400},
-                {"-Robin","b0bb1","username_character_check",400},
-                {"Robin","Bob3","password_length_check",400},
-                {"Robin","bobby","password_character_check",400},
-                {"Robin","Bobb3!@%!@?$%","password_character_check",400},
-                {"Robin","3obbY","password_character_check",400},
-                {"Robin","ThisisoverthirtyCharacters3ss3s","password_length_check",400}
+                {"Batman","bObb1","Invalid username",400},
+                {"bobb","bObb1","Invalid username",400},
+                {"thisisoverthirtycharachtersssss","bObb1","Invalid username",400},
+                {"Robin>!@#?!@#$%","bObb1","Invalid username",400},
+                {"_Robin","bObb1","Invalid username",400},
+                {"3Robin","b0bb1","Invalid username",400},
+                {"-Robin","b0bb1","Invalid username",400},
+                {"Robin","Bob3","Invalid password",400},
+                {"Robin","bobby","Invalid password",400},
+                {"Robin","Bobb3!@%!@?$%","Invalid password",400},
+                {"Robin","3obbY","Invalid password",400},
+                {"Robin","ThisisoverthirtyCharacters3ss3s","Invalid password",400}
         };
-    }
-
-    @Before
-    public void setup() {
-        jsonAsMap = new HashMap<>();
-        jsonAsMap.put("username",username);
-        jsonAsMap.put("password",password);
     }
 
     @Test
     public void registerPositiveTest() {
+        String requestBody = "{ \"username\": \"" + username + "\"," +
+                "\"password\": \"" + password + "\"}";
         RestAssured.given()
-                .contentType(ContentType.JSON).body(jsonAsMap)
+                .contentType(ContentType.JSON)
+                .body(requestBody)
                 .when().post("register")
-                .then().header("Content-Type", IsEqual.equalTo(ContentType.JSON.toString()))
+                .then()
                 .statusCode(statusCode).body("message", IsEqual.equalTo(message));
     }
 

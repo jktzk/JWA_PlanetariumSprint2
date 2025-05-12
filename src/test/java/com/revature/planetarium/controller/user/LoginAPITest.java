@@ -44,10 +44,8 @@ public class LoginAPITest extends APIFixture {
                 .response();
 
 
-        @SuppressWarnings("unchecked")
         Map<String, Object> body = resp.as(Map.class);
 
-        // Override the id
         body.put("id", 0);
 
 
@@ -68,8 +66,6 @@ public class LoginAPITest extends APIFixture {
                 .extract()
                 .response();
 
-        @SuppressWarnings("unchecked")
-        Map<String, Object> body = resp.as(Map.class);
         assertEquals("Invalid credentials", resp.prettyPrint());
     }
 }

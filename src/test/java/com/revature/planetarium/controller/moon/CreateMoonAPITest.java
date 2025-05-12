@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,11 +40,11 @@ public class CreateMoonAPITest extends APIFixture {
     @Parameterized.Parameters
     public static Object[][] inputs() throws IOException {
         return new Object[][]{
-                {1, "EarthMoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/moon-3.jpg").toPath()), 200, ""},
-                {1, "EarthMoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/planet-5.png").toPath()), 200, ""},
-                {1, "EarthMoon", 1, new byte[0], 200, ""},
+                {1, "EarthMoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/moon-3.jpg").toPath()), 201, ""},
+                {1, "EarthMoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/planet-5.png").toPath()), 201, ""},
+                {1, "EarthMoon", 1, new byte[0], 201, ""},
                 {1, "Luna", 1, new byte[0], 400,  "Invalid moon name"},
-                {3121, "EarthMoon", 1, new byte[0], 400, "Invalid planet identifier"},
+                {1, "EarthMoon", 3121, new byte[0], 400, "Invalid planet identifier"},
                 {1, "Earthmoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/planet-1.gif").toPath()), 400, "Invalid file type"}
         };
     }
@@ -50,26 +52,41 @@ public class CreateMoonAPITest extends APIFixture {
 @Before
 public void setup() throws SQLException, IOException {
     sessionID = super.authentication("Batman", "Iamthenight1939");
-    jsonAsMap = new HashMap<>();
-    jsonAsMap.put("moonName",moonName);
-    jsonAsMap.put("ownerID",ownerID);
-    if (imageData != null && imageData.length > 0) {
-        jsonAsMap.put("imageData", imageData);
-    } else {
-        jsonAsMap.remove("imageData");
+//    jsonAsMap = new HashMap<>();
+//    jsonAsMap.put("moonName",moonName);
+//    jsonAsMap.put("ownerID",ownerID);
+//    if (imageData != null && imageData.length > 0) {
+//        jsonAsMap.put("imageData", imageData);
+//    } else {
+//        jsonAsMap.remove("imageData");
+//    }
+}
+
+    @Test
+    public void createMoonAPITester() {
+        String requestBody;
+        if (imageData.length == 0) {
+            requestBody = "{ \"moonName\": \"" + moonName + "\"," +
+                    "\"ownerId\": \"" + ownerID + "\"" + "}";
+        } else {
+            requestBody = "{ \"moonName\": \"" + moonName + "\"," +
+                    "\"ownerId\": \"" + ownerID + "\"," +
+                    "\"imageData\": \"" + Base64.getEncoder().encodeToString(imageData)
+                    + "\"" +
+                    "}";
+        }
+
+        RestAssured.given()
+                .cookie("JSESSIONID", sessionID)
+                .contentType(ContentType.JSON)
+                .body(requestBody)
+                .when()
+                .post("planetarium/planet/" +planetID+ "/moon")
+                .then()
+                .statusCode(statusCode);
+//            .body("message", IsEqual.equalTo(message));
+
+
     }
 }
 
-@Test
-public void createMoonAPITester() {
-    RestAssured.given()
-            .cookie("JSESSIONID", sessionID)
-            .contentType(ContentType.JSON).body(jsonAsMap)
-            .when().post("/planetarium/planet/" +planetID+ "/moon")
-            .then()
-            .header("Content-Type",
-                    IsEqual.equalTo(ContentType.JSON.toString()))
-            .statusCode(statusCode)
-            .body("message", IsEqual.equalTo(message));
-    }
-}

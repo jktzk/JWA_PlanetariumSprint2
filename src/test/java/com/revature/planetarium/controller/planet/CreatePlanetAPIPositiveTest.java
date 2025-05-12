@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Base64;
 
 @RunWith(Parameterized.class)
 public class CreatePlanetAPIPositiveTest extends APIFixture {
@@ -71,9 +72,9 @@ public class CreatePlanetAPIPositiveTest extends APIFixture {
                     .statusCode(statusCode);
         } else {
             requestBody = "{ \"planetName\": \"" + planetName + "\"," +
-                    "\"ownerId\": \"" + ownerId + "\"" +
+                    "\"ownerId\": \"" + ownerId + "\"," +
                     "\"imageData\": \"" +
-                    Arrays.toString(Files.readAllBytes(new File(pathName + imageData).toPath()))
+                    Base64.getEncoder().encodeToString(Files.readAllBytes(new File(pathName + imageData).toPath()))
                     + "\"" +
                     "}";
             RestAssured.given()
