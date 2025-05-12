@@ -71,7 +71,5 @@ public void createMoonAPITester() {
                     IsEqual.equalTo(ContentType.JSON.toString()))
             .statusCode(statusCode)
             .body("message", IsEqual.equalTo(message));
-
-
-}
+    }
 }
