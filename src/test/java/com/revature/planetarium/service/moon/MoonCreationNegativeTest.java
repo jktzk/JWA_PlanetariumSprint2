@@ -1,18 +1,14 @@
-package service.moon;
+package com.revature.planetarium.service.moon;
 
 import com.revature.planetarium.entities.Moon;
 import com.revature.planetarium.exceptions.MoonFail;
 import com.revature.planetarium.repository.moon.MoonDao;
-import com.revature.planetarium.service.moon.MoonServiceImp;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
