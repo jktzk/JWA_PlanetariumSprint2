@@ -1,8 +1,7 @@
-package service.moon;
+package com.revature.planetarium.service.moon;
 
 import com.revature.planetarium.entities.Moon;
 import com.revature.planetarium.repository.moon.MoonDao;
-import com.revature.planetarium.service.moon.MoonServiceImp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

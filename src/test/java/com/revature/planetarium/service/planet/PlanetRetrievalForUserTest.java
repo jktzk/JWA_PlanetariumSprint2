@@ -1,21 +1,17 @@
-package service.planet;
+package com.revature.planetarium.service.planet;
 
 import com.revature.planetarium.entities.Planet;
-import com.revature.planetarium.exceptions.PlanetFail;
 import com.revature.planetarium.repository.planet.PlanetDao;
-import com.revature.planetarium.service.planet.PlanetServiceImp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import static com.revature.planetarium.utility.PlanetariumSetup.planetService;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
