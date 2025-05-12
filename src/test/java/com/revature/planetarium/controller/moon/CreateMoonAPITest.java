@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -40,10 +39,11 @@ public class CreateMoonAPITest extends APIFixture {
     public static Object[][] inputs() throws IOException {
         return new Object[][]{
                 {1, "EarthMoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/moon-3.jpg").toPath()), 200, ""},
+                {1, "EarthMoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/planet-5.png").toPath()), 200, ""},
                 {1, "EarthMoon", 1, new byte[0], 200, ""},
                 {1, "Luna", 1, new byte[0], 400,  "Invalid moon name"},
                 {3121, "EarthMoon", 1, new byte[0], 400, "Invalid planet identifier"},
-                {1, "Earthmoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/moon-3.jpg").toPath()), 400, "Invalid file type"}
+                {1, "Earthmoon", 1, Files.readAllBytes(new File("src/test/resources/Celestial-Images/planet-1.gif").toPath()), 400, "Invalid file type"}
         };
     }
 
@@ -71,7 +71,5 @@ public void createMoonAPITester() {
                     IsEqual.equalTo(ContentType.JSON.toString()))
             .statusCode(statusCode)
             .body("message", IsEqual.equalTo(message));
-
-
-}
+    }
 }
