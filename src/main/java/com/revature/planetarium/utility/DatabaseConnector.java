@@ -11,8 +11,10 @@ public class DatabaseConnector {
     public static Connection getConnection() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
-        String url = AppConfig.DATABASE_URL;
+        String url = "jdbc:sqlite:src/main/resources/LocalPlanetarium.db";
         return DriverManager.getConnection(url, config.toProperties());
     }
+
+//  Old url -->  AppConfig.DATABASE_URL
 
 }
