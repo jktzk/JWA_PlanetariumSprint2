@@ -52,7 +52,7 @@ public class MoonCreationNegativeTest {
     }
 
     @Test
-    public void createPlanetRepoNegativeTest() throws SQLException {
+    public void createMoonRepoNegativeTest() throws SQLException {
         SQLException result = Assert.assertThrows(SQLException.class, () -> moonDao.createMoon(negativeMoon));
         Assert.assertTrue(result.getMessage().contains(constraint));
     }

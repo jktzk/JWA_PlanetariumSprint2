@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Base64;
 
 public class GetPlanetsByOwnerAPITest extends APIFixture {
 
@@ -38,7 +39,7 @@ public class GetPlanetsByOwnerAPITest extends APIFixture {
                         "planetName", IsEqual.equalTo("Earth"),
                         "ownerId", IsEqual.equalTo("1"),
                         "imageData", IsEqual.equalTo(
-                                Files.readAllBytes(new File("src/test/resources/Celestial-Images/planet-1.jpg").toPath())
+                                Base64.getEncoder().encodeToString(Files.readAllBytes(new File("src/test/resources/Celestial-Images/planet-1.jpg").toPath()))
                         )
                 );
     }

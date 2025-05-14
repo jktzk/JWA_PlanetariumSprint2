@@ -18,6 +18,7 @@ public class UserDaoImp implements UserDao {
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)){
             stmt.setString(1, newUser.getUsername());
             stmt.setString(2, newUser.getPassword());
+            // regex expression: [^a-zA-Z0-9,_,-]
             stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
