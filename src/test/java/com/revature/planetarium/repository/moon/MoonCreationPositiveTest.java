@@ -58,7 +58,7 @@ public class MoonCreationPositiveTest {
     }
 
     @Test
-    public void createPlanetRepoPositiveTest() throws SQLException {
+    public void createMoonRepoPositiveTest() throws SQLException {
         Optional<Moon> result = moonDao.createMoon(positiveMoon);
         Assert.assertTrue(result.isPresent());
         Moon returnedMoon = result.get();
