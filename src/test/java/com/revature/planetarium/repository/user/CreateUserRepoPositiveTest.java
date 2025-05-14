@@ -36,7 +36,7 @@ public class CreateUserRepoPositiveTest {
                     {"Robin","bob_b1"},
                     {"Robin","bobb-1"},
                     {"Robin","bob_b-1"},
-                    {"Robin","Thisshouldbethirtycharcters3"},
+                    {"Robin","Thisshouldbethirtycharcters3"}
             };
     }
 
